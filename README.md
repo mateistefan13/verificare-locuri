@@ -1,7 +1,7 @@
-	Program care compara daca o sala a pastrat in timp coordonatele locurilor, folosind timpul de referinta T0. Formatul folosit pentru identificarea locurilor
+	Tool care compara daca o sala a pastrat in timp coordonatele locurilor, folosind timpul de referinta T0. Formatul folosit pentru identificarea locurilor
 este (zona, rand loc).
 
-	Programul are la baza o aplicatie JS care importa fisiere (prin NodeJS) continand array-rile cu coordonatele locurilor.
+	Tool-ul are la baza o aplicatie JS care importa fisiere (prin NodeJS) continand array-rile cu coordonatele locurilor.
 
 	Pentru a vedea in browser, in mod static, locurile care si-au schimbat coordonatele, am folosit compilatorul Browserify:
 		#acesta uneste datele de intrare (sala1_t0.js, sala1_t0.js) cu algoritmul de verificare (algoritm_verifiare.js) in bundle.js
