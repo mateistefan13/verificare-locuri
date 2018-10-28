@@ -1,4 +1,4 @@
-	Program care compara daca o sala a pastrat in timp coordonatele locurilor, comparand cu timpul de referinta T0. Formatul folosit pentru identificarea locurilor
+	Program care compara daca o sala a pastrat in timp coordonatele locurilor, folosind timpul de referinta T0. Formatul folosit pentru identificarea locurilor
 este (zona, rand loc).
 
 	Programul are la baza o aplicatie JS care importa fisiere (prin NodeJS) continand array-rile cu coordonatele locurilor.
