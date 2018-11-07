@@ -1,15 +1,17 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 
-/*	- Avem array-urile: 
-		--"a" = array-ul care are coordonatele locurilor initiale, coorodnatele de referinta (Pozitionare Initiala)
-		--"b" = array-ul care are coordonatele locurilor noi, care trebuie confruntate (Pozitionare Noua)
-		--"c" = array-ul colector in care vor fi pushate valorile indecsilor care nu sunt egali, inclusiv cheia lor (Identificatorul de Probleme)
-	- Folosim NodeJS pentru a importa datele de intrare. Fisierele importate contin array-urile, pe care le stocam aici in variabilele a si b.
+/*	-Avem obiectele: 
+		--"a" = obiectul ale carui proprietati au coordonatele locurilor initiale, coorodnatele de referinta (Pozitionare Initiala)
+		--"b" = obiectul ale carui proprietati au coordonatele locurilor noi, care trebuie confruntate (Pozitionare Noua)
+		--"c" = obiectul colector in care vor fi introduse atributele coordonatelor care nu sunt egale, inclusiv cheia lor (Identificatorul de Probleme)
+
+	- Folosim NodeJS pentru a importa datele de intrare. Fisierele importate contin obiectele, pe care le stocam aici in variabilele a si b.
 	
-	-IMPORTANT!!! atat variabilele din acest fisier, cat si array-urile din fisierele importate trebuie sa pastreze denumirea de "a" si "b" pentru ca programul sa functioneze
-	-IMPORTANT!!! Daca nu se compara key-uri identice (ex, A_1_1 din sala_t0 cu A_1_1 din sala_t1), va da eroare!!! Trebuie comparate key-uri identice!!! 
+	- IMPORTANT!!! atat datele din acest fisier, cat si obiectele din fisierele importate trebuie sa pastreze denumirea de "a" si "b" pentru ca tool-ul sa functioneze
+
+	- IMPORTANT!!! Daca nu se compara key-uri identice (ex, A_1_1 din sala_t0 cu A_1_1 din sala_t1), va da eroare!!! Trebuie comparate key-uri identice!!! 
 	
-	-REMINDER: Outputul (ex, A_5_5: [ 400, 400, 430, 430 ]) are structura zona_rand_loc:[coordonata a, coordonata a, coordonata b, coordonata b] => Primele 2 sunt cele bune!!!
+	- REMINDER: Outputul (ex, A_5_5: [ 400, 400, 430, 430 ]) are structura A_n_n:[coordonata a, coordonata a, coordonata b, coordonata b] => Primele 2 sunt cele bune!!!
 */
 
 var a = require('./sala1_t0'); 
@@ -25,30 +27,27 @@ if (a[key][0] !== b[key][0] || a[key][1] !== b[key][1]) {
 
 console.log(c);
 
-//	Iteratia care ajuta la dinamicizarea crearii de content, folosind datele introduse prin request
+// Desenarea cercurilor pentru locurile initiale care nu se vor schimba, apar cu negru
+Object.keys(a).forEach(function(key) {
+	circle(a[key][0], a[key][1], "black");
+})
+
+//iteratia care ajuta la dinamicizarea crearii de content, folosind datele introduse prin request
 for (var key in c) {
-	//dinamicizarea crearii cercului verde, locul cu pozitionare corecta
+	//dinamicizarea crearii cercului verde, locul cu pozitionare initiala
 	if (c.hasOwnProperty(key)) {
-	canvasContext.beginPath(); //daca nu bag asta, conecta cercul de linie
-	canvasContext.arc(c[key][0], c[key][1], 10, 0, Math.PI*2, false);
-	canvasContext.strokeStyle = "green";
-	canvasContext.stroke(); 
+		//vechile locuri sunt afisate cu rosu
+		circle(c[key][0], c[key][1], "rgba(255,0,0,0.5)")
 	}
-	//dinamicizarea crearii cercului rosu, locul cu pozitionare incorecta
+	//dinamicizarea crearii cercului rosu, locul cu pozitionare noua
     if (c.hasOwnProperty(key)) {
-        console.log(key + " -> " + c[key]);
-		canvasContext.beginPath(); //daca nu bag asta, conecta cercul de linie
-		canvasContext.arc(c[key][2], c[key][3], 10, 0, Math.PI*2, false);
-		canvasContext.strokeStyle = "rgba(255,0,0,0.5)";
-		canvasContext.stroke(); 
+        //console.log(key + " -> " + c[key]);
+		//noile locuri sunt afisate cu verde
+		circle(c[key][2], c[key][3], "green")	
     }
 	//dinamicizarea sagetii care pleaca de la locul gresit (cercul rosu) catre locul corespunzator (cercul verde)
 	if (c.hasOwnProperty(key)) {
-	canvasContext.beginPath();
-	canvasContext.moveTo(c[key][2], c[key][3]); //de aici incepe
-	canvasContext.lineTo(c[key][0], c[key][1]); //se duce aici, apoi de aici mai departe
-	canvasContext.strokeStyle = "black";
-	canvasContext.stroke();
+	line(c[key][2], c[key][3], c[key][0], c[key][1], "black");
 	}
 }
 
