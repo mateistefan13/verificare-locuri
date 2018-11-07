@@ -11,13 +11,13 @@ este (zona, rand loc).
 Algoritmul de verificare:
 
 	-Avem array-urile: 
-		--"a" = array-ul care are coordonatele locurilor "bune", coorodnatele de referinta (Pozitionare Corecta)
-		--"b" = array-ul care are coordonatele locurilor care trebuie confruntate (Pozitionare de Testat)
+		--"a" = array-ul care are coordonatele locurilor initiale, coorodnatele de referinta (Pozitionare Initiala)
+		--"b" = array-ul care are coordonatele locurilor noi, care trebuie confruntate (Pozitionare Noua)
 		--"c" = array-ul colector in care vor fi pushate valorile indecsilor care nu sunt egali, inclusiv cheia lor (Identificatorul de Probleme)
 
 	- Folosim NodeJS pentru a importa datele de intrare. Fisierele importate contin array-urile, pe care le stocam aici in variabilele a si b.
 	
-	- IMPORTANT!!! atat variabilele din acest fisier, cat si array-urile din fisierele importate trebuie sa pastreze denumirea de "a" si "b" pentru ca programul sa functioneze
+	- IMPORTANT!!! atat variabilele din acest fisier, cat si array-urile din fisierele importate trebuie sa pastreze denumirea de "a" si "b" pentru ca tool-ul sa functioneze
 
 	- IMPORTANT!!! Daca nu se compara key-uri identice (ex, A_1_1 din sala_t0 cu A_1_1 din sala_t1), va da eroare!!! Trebuie comparate key-uri identice!!! 
 	
