@@ -34,7 +34,3 @@ Algoritm dinamic:
 
     - In momentul in care tool-ul recunoaste pozitionari diferite, le stocheaza in obiectul c si va procesa in mod dinamic cu ajutorul elementului Canvas cate un cerculet rosu pentru locul cu pozitia schimbata si unul verde pentru locul cu pozitia noua, indicand, de asemenea, cu o sageata cercurile pereche
     - Locurile care nu isi schimba pozitia sunt colorate cu negru
-
-Atentie!!!
-
-    - am pastrat in fisierul canvas.js pozitionarea statica pentru a o folosi drept punct de referinta. Algoritmul dinamic va marca oricum locul potrivit cu cate un cerc verde.

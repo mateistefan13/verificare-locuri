@@ -34,18 +34,17 @@ Object.keys(a).forEach(function(key) {
 //iteratia care ajuta la dinamicizarea crearii de content, folosind datele introduse prin request
 for (var key in c) {
 	//dinamicizarea crearii cercului verde, locul cu pozitionare initiala
-	if (c.hasOwnProperty(key)) {
-		//vechile locuri sunt afisate cu rosu
-		circle(c[key][0], c[key][1], "rgba(255,0,0,0.5)")
+	if (key in c === true) {
+		//vechile locuri sunt afisate cu rosu; fostul rosu era "rgba(255,0,0,0.5)"
+		circle(c[key][0], c[key][1], "red");
 	}
 	//dinamicizarea crearii cercului rosu, locul cu pozitionare noua
-    if (c.hasOwnProperty(key)) {
-        //console.log(key + " -> " + c[key]);
+    if (key in c === true) {
 		//noile locuri sunt afisate cu verde
-		circle(c[key][2], c[key][3], "green")	
+		circle(c[key][2], c[key][3], "green");
     }
 	//dinamicizarea sagetii care pleaca de la locul gresit (cercul rosu) catre locul corespunzator (cercul verde)
-	if (c.hasOwnProperty(key)) {
+	if (key in c === true) {
 	line(c[key][2], c[key][3], c[key][0], c[key][1], "black");
 	}
 }
