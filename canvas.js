@@ -5,6 +5,9 @@ canvas.height = window.innerHeight;
 
 var canvasContext = canvas.getContext("2d");
 
+
+
+
 //Randul 1 - t0 - generare automata de randuri la 30 de pixeli distanta
 var x_1_0 = 130;
 var y_1_0 = 100;
@@ -26,7 +29,7 @@ for (i_2_0 = 0; i_2_0 < 20; i_2_0++) {
 	canvasContext.strokeStyle = "green";
 	canvasContext.stroke(); 
 } 
-
+/*
 //Confruntari - manuale
 	canvasContext.beginPath(); //daca nu bag asta, conecta cercul de linie
 	canvasContext.arc(230, 100, 10, 0, Math.PI*2, false);
@@ -62,7 +65,7 @@ for (i_2_0 = 0; i_2_0 < 20; i_2_0++) {
 	canvasContext.lineTo(370, 130); //se duce aici, apoi de aici mai departe
 	canvasContext.strokeStyle = "black";
 	canvasContext.stroke();
-	
+*/
 	
 	
 	

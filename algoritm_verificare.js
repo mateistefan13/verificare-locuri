@@ -24,3 +24,30 @@ if (a[key][0] !== b[key][0] || a[key][1] !== b[key][1]) {
 
 console.log(c);
 
+//	Iteratia care ajuta la dinamicizarea crearii de content, folosind datele introduse prin request
+for (var key in c) {
+	//dinamicizarea crearii cercului verde, locul cu pozitionare corecta
+	if (c.hasOwnProperty(key)) {
+	canvasContext.beginPath(); //daca nu bag asta, conecta cercul de linie
+	canvasContext.arc(c[key][0], c[key][1], 10, 0, Math.PI*2, false);
+	canvasContext.strokeStyle = "green";
+	canvasContext.stroke(); 
+	}
+	//dinamicizarea crearii cercului rosu, locul cu pozitionare incorecta
+    if (c.hasOwnProperty(key)) {
+        console.log(key + " -> " + c[key]);
+		canvasContext.beginPath(); //daca nu bag asta, conecta cercul de linie
+		canvasContext.arc(c[key][2], c[key][3], 10, 0, Math.PI*2, false);
+		canvasContext.strokeStyle = "rgba(255,0,0,0.5)";
+		canvasContext.stroke(); 
+    }
+	//dinamicizarea sagetii care pleaca de la locul gresit (cercul rosu) catre locul corespunzator (cercul verde)
+	if (c.hasOwnProperty(key)) {
+	canvasContext.beginPath();
+	canvasContext.moveTo(c[key][2], c[key][3]); //de aici incepe
+	canvasContext.lineTo(c[key][0], c[key][1]); //se duce aici, apoi de aici mai departe
+	canvasContext.strokeStyle = "black";
+	canvasContext.stroke();
+	}
+}
+
