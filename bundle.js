@@ -29,11 +29,20 @@ console.log(c);
 
 // Desenarea cercurilor pentru locurile initiale care nu se vor schimba, apar cu negru
 Object.keys(a).forEach(function(key) {
-	circle(a[key][0], a[key][1], "black");
+		circle(a[key][0], a[key][1], "black");
 })
 
-//iteratia care ajuta la dinamicizarea crearii de content, folosind datele introduse prin request
-for (var key in c) {
+// Desenarea cercurilor pentru locurile noi care nu au corespondent in cele vechi
+Object.keys(b).forEach(function(key) {
+	if(key in b !== key in a) {
+		circle(b[key][0], b[key][1], "green");
+    }
+})
+
+
+// Iteratia care ajuta la dinamicizarea crearii de content, folosind datele introduse prin request
+// inainte foloseam for (var key in c) in loc de Object.keys(c)
+Object.keys(c).forEach(function(key) {
 	//dinamicizarea crearii cercului verde, locul cu pozitionare initiala
 	if (key in c === true) {
 		//vechile locuri sunt afisate cu rosu; fostul rosu era "rgba(255,0,0,0.5)"
@@ -46,10 +55,9 @@ for (var key in c) {
     }
 	//dinamicizarea sagetii care pleaca de la locul gresit (cercul rosu) catre locul corespunzator (cercul verde)
 	if (key in c === true) {
-	line(c[key][2], c[key][3], c[key][0], c[key][1], "black");
+		line(c[key][2], c[key][3], c[key][0], c[key][1], "black");
 	}
-}
-
+})
 
 },{"./sala1_t0":2,"./sala1_t1":3}],2:[function(require,module,exports){
 let a = {
@@ -92,7 +100,11 @@ let a = {
 	"A_2_17":[610, 130],
 	"A_2_18":[640, 130],
 	"A_2_19":[670, 130],
-	"A_2_20":[700, 130]
+	"A_3_1":[130, 160],
+	"A_3_2":[160, 160],
+	//"A_4_1":[160, 180],
+	
+	
 	};
 	
 	module.exports = a;
@@ -122,7 +134,7 @@ let b = {
 	"A_1_20":[720, 100],
 	"A_2_1":[130, 130],
 	"A_2_2":[160, 130],
-	"A_2_3":[190, 130],
+	"A_2_3":[190, 120],
 	"A_2_4":[220, 130],
 	"A_2_5":[300, 180],
 	"A_2_6":[280, 130],
@@ -139,7 +151,12 @@ let b = {
 	"A_2_17":[610, 130],
 	"A_2_18":[640, 130],
 	"A_2_19":[670, 130],
-	"A_2_20":[700, 130]
+	"A_2_20":[700, 130],
+	"A_3_1":[130, 160],
+	"A_3_2":[160, 160],
+	"A_3_3":[190, 160],
+	"A_3_4":[220, 160],
+	"A_3_5":[250, 160],
 	};
 	
 	module.exports = b;

@@ -28,11 +28,20 @@ console.log(c);
 
 // Desenarea cercurilor pentru locurile initiale care nu se vor schimba, apar cu negru
 Object.keys(a).forEach(function(key) {
-	circle(a[key][0], a[key][1], "black");
+		circle(a[key][0], a[key][1], "black");
 })
 
-//iteratia care ajuta la dinamicizarea crearii de content, folosind datele introduse prin request
-for (var key in c) {
+// Desenarea cercurilor pentru locurile noi care nu au corespondent in cele vechi
+Object.keys(b).forEach(function(key) {
+	if(key in b !== key in a) {
+		circle(b[key][0], b[key][1], "green");
+    }
+})
+
+
+// Iteratia care ajuta la dinamicizarea crearii de content, folosind datele introduse prin request
+// inainte foloseam for (var key in c) in loc de Object.keys(c)
+Object.keys(c).forEach(function(key) {
 	//dinamicizarea crearii cercului verde, locul cu pozitionare initiala
 	if (key in c === true) {
 		//vechile locuri sunt afisate cu rosu; fostul rosu era "rgba(255,0,0,0.5)"
@@ -45,7 +54,6 @@ for (var key in c) {
     }
 	//dinamicizarea sagetii care pleaca de la locul gresit (cercul rosu) catre locul corespunzator (cercul verde)
 	if (key in c === true) {
-	line(c[key][2], c[key][3], c[key][0], c[key][1], "black");
+		line(c[key][2], c[key][3], c[key][0], c[key][1], "black");
 	}
-}
-
+})
